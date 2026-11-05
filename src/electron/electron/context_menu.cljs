@@ -37,10 +37,10 @@
               (. menu append
                  (MenuItem. #js {:label (t :electron/look-up)
                                  :click #(. web-contents showDefinitionForSelection)})))
-             (when has-text?
-               (. menu append
-                 (MenuItem. #js {:label (t :electron/search-with-google)
-                                 :click #(let [url (js/URL. "https://www.google.com/search")]
+            (when has-text?
+              (. menu append
+                 (MenuItem. #js {:label "Search with Brave"
+                                 :click #(let [url (js/URL. "https://search.brave.com/search")]
                                            (.. url -searchParams (set "q" selection-text))
                                            (.. shell (openExternal (.toString url))))}))
               (. menu append (MenuItem. #js {:type "separator"})))
